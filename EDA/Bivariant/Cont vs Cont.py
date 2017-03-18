@@ -15,6 +15,19 @@ titanic_train.shape
 titanic_train.info()
 titanic_train.describe()
 
+#columns 
+titanic_train.columns
+#index
+titanic_train.index
+titanic_train.iloc[9][3]
+titanic_train.loc[9][3]
+titanic_train.values
+titanic_train.values.sum()
+for i in range(0,5):
+   print i 
+a = [1,2,3,4,5,6]
+print a[2:-1] 
+
 titanic_train["Survived"] = titanic_train["Survived"].astype("category")
 titanic_train["Sex"] = titanic_train["Sex"].astype("category")
 titanic_train["Pclass"] = titanic_train["Pclass"].astype("category")
