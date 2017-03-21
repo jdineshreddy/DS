@@ -65,14 +65,14 @@ print(titanic_train1[dis_f2])  # same as above
 df_f3 = titanic_train1.Fare.between(82.0145,82.6646)  
 sum(df_f3) # print 2(count)
 print(titanic_train1.loc[df_f3])
-print(titanic_train1[df_f3])     # passenger 34, 375 having same fare that way no spliting happend
+print(titanic_train1[df_f3])     # passenger 34, 375 having same fare and one9340 is Survived and other(375) is non Survived
 
 # second analysis for fare between 90.5396, 99.9625 from dt1.pdf file
 df_f4 = titanic_train1['Fare'].between(90.5396, 99.9625) 
 sum(df_f4)  # print 4(count)
 print(titanic_train1.loc[df_f4])  
 print(titanic_train1[df_f4])   
-# passenger 291, 484 having 91.0792 fare and  520,820 having 93.5000 fare.here spliting does not happened.
+# passenger 291, 484 having 91.0792 fare and  520,820 having 93.5000 fare.here spliting does not happened.because all are Survived.
 
 
      
