@@ -56,12 +56,21 @@ sim_data6.Embarked.value_counts()
 # Name: Embarked, dtype: int64
 #==============================================================================
 
+train.Embarked.value_counts()
+#==============================================================================
+# S    644
+# C    168
+# Q     77
+# Name: Embarked, dtype: int64
+#==============================================================================
+
+
 sim_data6.Embarked.value_counts().max()
 # 17
 
 sim_data7 = train[(train.Sex == 'female') & (train.Pclass == 1) & (train.Survived == 1)
                  & (train.SibSp == 0) & (train.Parch == 0) & (train.Cabin == 'B28')]
 sim_data7.shape  #  (2, 12)
-train[(train.Cabin == 'B28')]
+
 
 

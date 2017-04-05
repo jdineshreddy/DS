@@ -130,3 +130,4 @@ sim_data6.Embarked.value_counts()
 
 sim_data6.Embarked.value_counts().max()
 # 17
+
