@@ -72,5 +72,37 @@ sim_data7 = train[(train.Sex == 'female') & (train.Pclass == 1) & (train.Survive
                  & (train.SibSp == 0) & (train.Parch == 0) & (train.Cabin == 'B28')]
 sim_data7.shape  #  (2, 12)
 
+train[train.Embarked.isnull()].Embarked = 'S'
+#==============================================================================
+# C:\Users\dines\Anaconda3\lib\site-packages\pandas\core\generic.py:2773: SettingWithCopyWarning: 
+# A value is trying to be set on a copy of a slice from a DataFrame.
+# Try using .loc[row_indexer,col_indexer] = value instead
+# 
+# See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+#   self[name] = value
+#==============================================================================
 
-
+train.iloc[train.Embarked.isnull()].Embarked = 'S'
+# iLocation based boolean indexing on an integer type is not available
+train.ix[train.Embarked.isnull()].Embarked = 'S'
+# A value is trying to be set on a copy of a slice from a DataFrame.
+train.loc[train.Embarked.isnull()].Embarked = 'S'  
+#==============================================================================
+# A value is trying to be set on a copy of a slice from a DataFrame.
+# Try using .loc[row_indexer,col_indexer] = value instead
+#==============================================================================
+train.iloc[61,'Embarked'] = 'S'
+#==============================================================================
+# Location based indexing can only have [integer, integer slice (START point
+# is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+#==============================================================================
+# both works for assigning value
+train.ix[61,'Embarked'] = 'S'
+train.loc[61,'Embarked'] = 'S'
+train.iloc[61]
+train.shape  # (891, 12)
+train1 = pd.get_dummies(train, columns = ['Pclass', 'Sex', 'Embarked'])
+train1.shape #(891, 17)
+train1.apply(lambda x: sum(x.isnull()))
+train1.info()
+train1.describe()     

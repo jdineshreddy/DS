@@ -39,7 +39,7 @@ titanic_train1.Pclass = le.fit_transform(titanic_train1.Pclass)
 dt = tree.DecisionTreeClassifier()
 # df.fit(x,y) here x = all columns which are used for analysis, y = target column
 # so first we haveto define x, y
-x_value = titanic_train1[['Fare']] # here i am assuming only 1 column for practice
+x_value = titanic_train1[['Fare','Pclass', 'Sex', 'Embarked']]
 y_value = titanic_train1.Survived
 dt.fit(x_value,y_value)
 
@@ -48,33 +48,7 @@ dot_data = io.StringIO()
 tree.export_graphviz(dt, out_file = dot_data, feature_names = x_value.columns)
 graph = pydot.graph_from_dot_data(dot_data.getvalue())[0] 
 os.chdir("E:\\DS\\Decision tree\\Tree diagrams")
-graph.write_pdf("one_dt1.pdf")
-
-
-# display range of rows in DataFrame
-dis_f = titanic_train1.Fare.between(69.425,74.375) #returns boolean
-dis_f2 = ( titanic_train1.Fare >= 69.425) & (titanic_train1.Fare <= 74.375) # both are same
-
-print(sum(dis_f), sum(dis_f2), type(dis_f), type(dis_f2)) # displays counts and both returns same value
-
-print(titanic_train1.loc[dis_f2]) # print those rows which satisfies the above condition
-print(titanic_train1[dis_f2])  # same as above  
-
-# in dt1.pdf file at the bottom we have only 2 samples between 82.6646, 82.0145 fare. print those columns
-
-df_f3 = titanic_train1.Fare.between(82.0145,82.6646)  
-sum(df_f3) # print 2(count)
-print(titanic_train1.loc[df_f3])
-print(titanic_train1[df_f3])     # passenger 34, 375 having same fare and one9340 is Survived and other(375) is non Survived
-
-# second analysis for fare between 90.5396, 99.9625 from dt1.pdf file
-df_f4 = titanic_train1['Fare'].between(90.5396, 99.9625) 
-sum(df_f4)  # print 4(count)
-print(titanic_train1.loc[df_f4])  
-print(titanic_train1[df_f4])   
-# passenger 291, 484 having 91.0792 fare and  520,820 having 93.5000 fare.here spliting does not happened.because all are Survived.
-
-
-     
+graph.write_pdf("two_dt1.pdf")
+    
     
 
