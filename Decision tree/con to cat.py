@@ -20,7 +20,7 @@ em_miss = train[pd.isnull(train[['Embarked']]).any(axis=1)]
 #  OR Emb_miss3 = titanic_train[titanic_train.Embarked.isnull()]
 # OR  Emb_miss5 = titanic_train.loc[titanic_train.Embarked.isnull()]
 #==============================================================================
-# PassengerId  Survived  Pclass                                       Name  \
+#      PassengerId  Survived  Pclass                          Name  \
 # 61            62         1       1                        Icard, Miss. Amelie   
 # 829          830         1       1  Stone, Mrs. George Nelson (Martha Evelyn)   
 # 

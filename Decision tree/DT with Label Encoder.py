@@ -39,7 +39,7 @@ titanic_train1.Pclass = le.fit_transform(titanic_train1.Pclass)
 dt = tree.DecisionTreeClassifier()
 # df.fit(x,y) here x = all columns which are used for analysis, y = target column
 # so first we haveto define x, y
-x_value = titanic_train1[['Fare']] # here i am assuming only 1 column for practice
+x_value = titanic_train1[['Fare', 'Pclass']] # here i am assuming only 2 column for practice
 y_value = titanic_train1.Survived
 dt.fit(x_value,y_value)
 
@@ -48,7 +48,7 @@ dot_data = io.StringIO()
 tree.export_graphviz(dt, out_file = dot_data, feature_names = x_value.columns)
 graph = pydot.graph_from_dot_data(dot_data.getvalue())[0] 
 os.chdir("E:\\DS\\Decision tree\\Tree diagrams")
-graph.write_pdf("one_dt1.pdf")
+graph.write_pdf("DT_with_Label_Encoder1.pdf")
 
 
 # display range of rows in DataFrame
