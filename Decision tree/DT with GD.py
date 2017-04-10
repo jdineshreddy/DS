@@ -53,8 +53,15 @@ train.loc[829,'Embarked'] = 'S'
 # We need to iterate to do.
 train.set_value(61, 'Embarked', 'S')
 train.set_value(829, 'Embarked', 'S')
+# To set multiple rows we need to iterate.
+Emb_nan = train.Embarked[train.Embarked.isnull()]
+Emb_nan.index  # Int64Index([61, 829], dtype='int64')
+for i in Emb_nan.index:
+    train.set_value(i,"Embarked", "S")
+train.iloc[829]
 # instead of writing two times we can write in a single line as
 train.Embarked[train.Embarked.isnull()] = 'S'
+# this is giving warning messages.
 train.apply(lambda x : sum(x.isnull()))
 
 train1 = pd.get_dummies(train, columns = ['Pclass', 'Sex', 'Embarked'])

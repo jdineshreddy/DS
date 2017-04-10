@@ -25,11 +25,28 @@ train_le.Embarked = le.fit_transform(train_le.Embarked)
 # first fill the missing data 
 train_le.set_value(61, 'Embarked', 'S')
 train_le.set_value(829, 'Embarked', 'S')
+
+# To set multiple rows we need to iterate.
+Emb_nan = train_le.Embarked[train_le.Embarked.isnull()]
+Emb_nan.index  # Int64Index([61, 829], dtype='int64')
+for i in Emb_nan.index:
+    train_le.set_value(i,"Embarked", "S")
+
+
 train_le.apply(lambda x: sum(x.isnull()))
+# Now it's not displayed any error message.
 
 train_le.Embarked = le.fit_transform(train_le.Embarked)
 
+
 # **************************** On Hot Encoding ********************************
 ohe = preprocessing.OneHotEncoder()
-# In Python we use get_dummy fot one hot encoding
+x_train = ohe.fit_transform(train_le[["Sex","Embarked","Pclass"]])
+x_train
+#==============================================================================
+# <891x8 sparse matrix of type '<class 'numpy.float64'>'
+# 	with 2673 stored elements in Compressed Sparse Row format> 
+#==============================================================================
+
+# In Python we use get_dummy for easy process.
 # **************************** End of On Hot Encoding *************************
