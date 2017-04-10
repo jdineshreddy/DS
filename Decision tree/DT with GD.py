@@ -58,7 +58,7 @@ Emb_nan = train.Embarked[train.Embarked.isnull()]
 Emb_nan.index  # Int64Index([61, 829], dtype='int64')
 for i in Emb_nan.index:
     train.set_value(i,"Embarked", "S")
-train.iloc[829]
+
 # instead of writing two times we can write in a single line as
 train.Embarked[train.Embarked.isnull()] = 'S'
 # this is giving warning messages.
