@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 #import numpy as np
-from sklearn import preprocessing
+from sklearn import preprocessing, tree, model_selection
 
 
 os.getcwd()
@@ -48,5 +48,19 @@ x_train
 # 	with 2673 stored elements in Compressed Sparse Row format> 
 #==============================================================================
 
-# In Python we use get_dummy for easy process.
 # **************************** End of On Hot Encoding *************************
+
+# In Python we use get_dummy for easy process.
+
+dt = tree.DecisionTreeClassifier(random_state = 10)
+y_train = train_le['Survived']
+dt.fit(x_train,y_train)
+dt.score(x_train,y_train) # 0.81144781144781142
+model_eve = model_selection.cross_val_score(dt, x_train, y_train, cv = 10)
+#==============================================================================
+# array([ 0.82222222,  0.77777778,  0.79775281,  0.85393258,  0.86516854,
+#         0.79775281,  0.80898876,  0.76404494,  0.82022472,  0.80681818])
+#==============================================================================
+model_eve.mean() # 0.81146833503575078
+
+# Using Get_dummy we got 0.8171742707978662  accuracy.

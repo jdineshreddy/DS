@@ -122,7 +122,7 @@ model_eve4 = model_selection.cross_val_score(dt1, x_values, y_value, cv =10)
 #         0.82022472,  0.83146067,  0.80898876,  0.83146067,  0.82954545])
 #==============================================================================
 model_eve4.mean() # 0.8171742707978662   
-# Each and every time we will get thw same average value.           
+# Each and every time we will get the same average value.           
 
 # ******************************  END  ****************************************
 
@@ -135,5 +135,3 @@ tree.export_graphviz(dt, out_file = dot_data, feature_names = x_values.columns)
 graph = pydot.graph_from_dot_data(dot_data.getvalue())[0] 
 os.chdir("E:\\DS\\Decision tree\\Tree diagrams")
 graph.write_pdf("DT_with_GD1.pdf")
-
-  
