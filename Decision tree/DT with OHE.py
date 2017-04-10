@@ -2,6 +2,8 @@ import os
 import pandas as pd
 #import numpy as np
 from sklearn import preprocessing, tree, model_selection
+import pydot
+import io
 
 
 os.getcwd()
@@ -64,3 +66,12 @@ model_eve = model_selection.cross_val_score(dt, x_train, y_train, cv = 10)
 model_eve.mean() # 0.81146833503575078
 
 # Using Get_dummy we got 0.8171742707978662  accuracy.
+
+
+
+
+dot_data = io.StringIO() 
+tree.export_graphviz(dt, out_file = dot_data, feature_names = x_train)
+graph = pydot.graph_from_dot_data(dot_data.getvalue())[0] 
+os.chdir("E:\\DS\\Decision tree\\Tree diagrams")
+graph.write_pdf("DT_with_OHE1.pdf")
